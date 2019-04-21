@@ -37,6 +37,7 @@ namespace OwinConsole
                     Console.WriteLine("Content type: {0}", contentType);
 
                     responseBody = reader.ReadToEnd(); // Now you process the response body.
+                    Console.WriteLine("Content : {0}", responseBody);
                 }
             }
             catch (AmazonS3Exception e)
