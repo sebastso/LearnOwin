@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyCustomAuthAttribute.cs" />
+    <Compile Include="S3Access.cs" />
     <Compile Include="ServiceList.cs" />
     <Compile Include="ServiceListController.cs" />
     <Compile Include="DemoController.cs" />
@@ -57,6 +58,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AWSSDK.S3">
+      <Version>3.3.101.5</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNet.WebApi.OwinSelfHost">
       <Version>5.2.7</Version>
     </PackageReference>

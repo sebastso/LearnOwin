@@ -7,13 +7,15 @@ using System.Web.Http;
 
 namespace OwinConsole
 {
-    
+
     public class DemoController : ApiController
     {
         // GET api/demo 
         [MyCustomAuthAttribute]
         public IEnumerable<string> Get()
         {
+            S3Access s3 = new S3Access();
+            s3.ReadObjectDataAsync("sony-bucket", "test_aws.txt").Wait();
             return new string[] { "Hello", "World" };
         }
 
