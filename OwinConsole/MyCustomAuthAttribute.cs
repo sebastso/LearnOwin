@@ -39,6 +39,8 @@ namespace OwinConsole
 
                 using (WebClient wc = new WebClient())
                 {
+                    //We can optimize to download these only once when app starts and use  it just for verfification
+                    //Not required to download each time
                     keysJson = wc.DownloadString(issUrl);
                 }
 
