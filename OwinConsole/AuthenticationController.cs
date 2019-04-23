@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace OwinConsole
 {
+    //Remove: AWSSDK.CognitoIdentityProvider from nuget if you do not want this class
     public class AuthenticationController : ApiController
     {
 

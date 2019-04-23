@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationController.cs" />
     <Compile Include="MyCustomAuthAttribute.cs" />
     <Compile Include="S3Access.cs" />
     <Compile Include="ServiceList.cs" />
@@ -58,6 +59,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AWSSDK.CognitoIdentity">
+      <Version>3.3.100.7</Version>
+    </PackageReference>
+    <PackageReference Include="AWSSDK.CognitoIdentityProvider">
+      <Version>3.3.101.1</Version>
+    </PackageReference>
     <PackageReference Include="AWSSDK.S3">
       <Version>3.3.101.5</Version>
     </PackageReference>

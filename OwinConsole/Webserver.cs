@@ -12,7 +12,7 @@ namespace OwinConsole
         IDisposable _webApp;
         public void Start()
         {
-            _webApp = WebApp.Start<Startup>("http://*:8085");
+            _webApp = WebApp.Start<Startup>("http://localhost:8085");
         }
         public void Stop()
         {

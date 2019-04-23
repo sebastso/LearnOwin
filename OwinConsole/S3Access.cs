@@ -1,4 +1,7 @@
 ﻿using Amazon;
+using Amazon.CognitoIdentity;
+using Amazon.CognitoIdentity.Model;
+using Amazon.Runtime;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System;
@@ -13,12 +16,29 @@ namespace OwinConsole
 
     public class S3Access
     {
+        public void AWSGetCredentialForIdentity(string jwtToken)
+        {
+            var credentials = new CognitoAWSCredentials("us-east-2:264e3c59-f348-43bc-8ee6-870927c4170d", bucketRegion);
+            credentials.AddLogin(
+                "cognito-idp.us-east-2.amazonaws.com/us-east-2_1kXC0Pa2p",
+                jwtToken); // th
+            var access = credentials.GetCredentials().AccessKey;
+            var secret = credentials.GetCredentials().SecretKey;
+
+            ReadObjectDataAsync("sony-bucket", "start.jpg", credentials).Wait();
+        }
         // Specify your bucket region (an example region is shown).
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast2;
-        private static IAmazonS3 client = new AmazonS3Client(bucketRegion);
 
-        public async Task ReadObjectDataAsync(string bucket, string objectKey)
+
+        public async Task ReadObjectDataAsync(string bucket, string objectKey, CognitoAWSCredentials cred)
         {
+            IAmazonS3 client = null;
+            if (cred != null)
+                client = new AmazonS3Client(cred, bucketRegion);
+            else
+                client = new AmazonS3Client(bucketRegion);
+
             string responseBody = "";
             try
             {
