@@ -22,10 +22,8 @@ namespace OwinConsole
             credentials.AddLogin(
                 "cognito-idp.us-east-2.amazonaws.com/us-east-2_1kXC0Pa2p",
                 jwtToken); // th
-            var access = credentials.GetCredentials().AccessKey;
-            var secret = credentials.GetCredentials().SecretKey;
 
-            ReadObjectDataAsync("sony-bucket", "start.jpg", credentials).Wait();
+            ReadObjectDataAsync("sony-new-bucket", "start.jpg", credentials).Wait();
         }
         // Specify your bucket region (an example region is shown).
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast2;
